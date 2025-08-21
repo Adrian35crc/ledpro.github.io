@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lumitrek – Tu marca en movimiento</title>
+  <meta name="description" content="Publicidad móvil con pantallas LED en motos, autos y vehículos. ¡Tu marca en movimiento!">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'neon-blue': '#00F0FF',
+            'dark-bg': '#0a0a0a',
+            'neon-pink': '#FF0066',
+          },
+          fontFamily: {
+            'orbitron': ['Orbitron', 'sans-serif'],
+            'montserrat': ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // ← Reemplaza con tu ID real
+  </script>
+
+  <!-- Google Translate Widget -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'es,en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <style>
+    body {
+      font-family: 'montserrat', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      font-family: 'orbitron', sans-serif;
+      color: #00F0FF;
+    }
+    .btn-primary {
+      background-color: #00F0FF;
+      color: black;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .btn-primary:hover {
+      background-color: #00c0cc;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00F0FF;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
+    .modal-content {
+      margin: 5% auto;
+      padding: 30px;
+      background-color: #111;
+      border-radius: 15px;
+      max-width: 800px;
+      color: white;
+      border: 1px solid #00F0FF;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #00F0FF;
+    }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      z-index: -1;
+    }
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+      transition: transform 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Google Translate -->
+  <div id="google_translate_element"></div>
+
+  <!-- Header -->
+  <header class="container mx-auto px-6 py-6 flex justify-between items-center">
+    <div class="text-2xl font-bold text-neon-blue" style="font-family: 'orbitron', sans-serif;">LUMITREK</div>
+    <nav class="hidden md:flex space-x-8">
+      <a href="#inicio" class="hover:text-neon-blue transition">Inicio</a>
+      <a href="#servicios" class="hover:text-neon-blue transition">Servicios</a>
+      <a href="#cotizar" class="hover:text-neon-blue transition">Cotiza aquí</a>
+      <a href="#galeria" class="hover:text-neon-blue transition">Galería</a>
+      <a href="#contacto" class="hover:text-neon-blue transition">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="relative h-screen flex items-center justify-center text-center px-6">
+    <video autoplay muted loop class="hero-video">
+      <source src="https://cdn.pixabay.com/video/2023/05/11/161337-816965429_large.mp4" type="video/mp4">
+    </video>
+    <div>
+      <h1 class="text-5xl md:text-7xl mb-4">LUMITREK</h1>
+      <p class="text-xl md:text-2xl text-gray-300 mb-6">Tu marca en movimiento</p>
+      <p class="max-w-3xl mx-auto text-gray-300 mb-10">Lleva tu publicidad a las calles con pantallas LED móviles de alto impacto en motocicletas, vehículos y paneles traseros.</p>
+      <a href="#cotizar" class="btn-primary">👉 Cotiza tu campaña ahora</a>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-20 px-6" data-aos="fade-up">
+    <div class="container mx-auto text-center mb-16">
+      <h2 class="text-4xl mb-6">Nuestros Servicios</h2>
+      <p class="max-w-2xl mx-auto text-gray-400">Elige cómo quieres que tu marca se mueva por la ciudad.</p>
+    </div>
+
+    <div class="container mx-auto grid md:grid-cols-3 gap-10 px-6">
+      <!-- Servicio 1 -->
+      <div class="bg-black p-8 rounded-xl border border-gray-800 hover:border-neon-blue transition" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-6xl mb-4">🏍️</div>
+        <h3 class="text-2xl mb-4">Motocicletas</h3>
+        <p class="text-gray-400 mb-6">Alta visibilidad en tráfico denso. Ideal para eventos y zonas peatonales.</p>
+        <button class="btn-primary text-sm" onclick="openModal('modalMoto')">Ver detalles</button>
+      </div>
+
+      <!-- Servicio 2 -->
+      <div class="bg-black p-8 rounded-xl border border-gray-800 hover:border-neon-blue transition" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-6xl mb-4">🚗</div>
+        <h3 class="text-2xl mb-4">Top de Vehículos</h3>
+        <p class="text-gray-400 mb-6">Pantallas en el techo. Perfecto para rutas comerciales y alto alcance.</p>
+        <button class="btn-primary text-sm" onclick="openModal('modalTop')">Ver detalles</button>
+      </div>
+
+      <!-- Servicio 3 -->
+      <div class="bg-black p-8 rounded-xl border border-gray-800 hover:border-neon-blue transition" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-6xl mb-4">🛻</div>
+        <h3 class="text-2xl mb-4">Pantallas Traseras</h3>
+        <p class="text-gray-400 mb-6">Impacto directo en semáforos y tráfico. Visible por autos detrás.</p>
+        <button class="btn-primary text-sm" onclick="openModal('modalTrasera')">Ver detalles</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cotización -->
+  <section id="cotizar" class="py-20 bg-gray-900 px-6" data-aos="fade-up">
+    <div class="container mx-auto max-w-4xl bg-black p-10 rounded-2xl border border-neon-blue">
+      <h2 class="text-4xl text-center mb-8">Cotiza tu Publicidad Aquí</h2>
+      <form id="formCotizacion">
+        <div class="mb-6">
+          <label class="block mb-2 font-semibold">Selecciona tus servicios:</label>
+          <div class="space-y-3">
+            <label class="flex items-center">
+              <input type="checkbox" name="servicio" value="moto" class="mr-2"> Publicidad en Motocicletas
+            </label>
+            <label class="flex items-center">
+              <input type="checkbox" name="servicio" value="top" class="mr-2"> Publicidad en Top de Vehículos
+            </label>
+            <label class="flex items-center">
+              <input type="checkbox" name="servicio" value="trasera" class="mr-2"> Publicidad en Pantallas Traseras
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block mb-2 font-semibold">Duración de la campaña:</label>
+          <input type="range" min="1" max="90" value="7" class="w-full" oninput="this.nextElementSibling.textContent = this.value + ' días'">
+          <span class="text-neon-blue font-bold">7 días</span>
+        </div>
+
+        <div class="mb-6">
+          <label class="block mb-2 font-semibold">Cantidad de unidades:</label>
+          <input type="number" min="1" class="w-full p-3 bg-gray-800 rounded border border-gray-600" placeholder="Ej: 5">
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <input type="text" placeholder="Nombre" class="p-3 bg-gray-800 rounded border border-gray-600" required>
+          <input type="email" placeholder="Email" class="p-3 bg-gray-800 rounded border border-gray-600" required>
+          <input type="tel" placeholder="Teléfono" class="p-3 bg-gray-800 rounded border border-gray-600">
+          <input type="text" placeholder="Empresa (opcional)" class="p-3 bg-gray-800 rounded border border-gray-600">
+        </div>
+
+        <button type="submit" class="btn-primary w-full">📩 Enviar Cotización</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section id="galeria" class="py-20 px-6" data-aos="fade-up">
+    <div class="container mx-auto text-center mb-16">
+      <h2 class="text-4xl mb-6">Galería de Impacto</h2>
+      <p class="text-gray-400">Mira cómo se ve tu marca en movimiento.</p>
+    </div>
+    <div class="container mx-auto grid md:grid-cols-3 gap-6 px-6">
+      <div class="rounded-lg overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moto LED" class="w-full h-60 object-cover group-hover:scale-105 transition">
+      </div>
+      <div class="rounded-lg overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Auto LED" class="w-full h-60 object-cover group-hover:scale-105 transition">
+      </div>
+      <div class="rounded-lg overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pantalla trasera" class="w-full h-60 object-cover group-hover:scale-105 transition">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-20 bg-gray-900 px-6" data-aos="fade-up">
+    <div class="container mx-auto max-w-3xl text-center">
+      <h2 class="text-4xl mb-8">¿Listo para brillar?</h2>
+      <p class="text-gray-300 mb-8">Contáctanos y llevemos tu marca a cada esquina de la ciudad.</p>
+      <div class="space-y-4 text-left max-w-lg mx-auto">
+        <p><strong>Email:</strong> hola@lumitrek.com</p>
+        <p><strong>Teléfono:</strong> +1 (555) 123-4567</p>
+        <p><strong>Redes:</strong> @lumitrek_official</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 px-6 text-center border-t border-gray-800">
+    <div class="container mx-auto">
+      <h3 class="text-2xl font-bold text-neon-blue mb-2">LUMITREK</h3>
+      <p class="text-gray-500">© 2025 Lumitrek. Todos los derechos reservados.</p>
+      <p class="text-sm text-gray-600 mt-2">Tu marca en movimiento</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flotante -->
+  <a href="https://wa.me/15551234567" target="_blank" class="whatsapp-float">💬</a>
+
+  <!-- Modales -->
+  <!-- Modal Motocicletas -->
+  <div id="modalMoto" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalMoto')">&times;</span>
+      <h3 class="text-3xl mb-4">Publicidad en Motocicletas</h3>
+      <p><strong>Resolución:</strong> 192x64 px | <strong>Brillo:</strong> 5000 nits</p>
+      <p><strong>Zonas:</strong> Centros urbanos, eventos, avenidas principales</p>
+      <p><strong>Precio base:</strong> $150/día (por unidad)</p>
+      <p class="mt-4">Perfecto para campañas rápidas y de alto impacto visual.</p>
+      <img src="https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moto LED" class="w-full mt-4 rounded">
+    </div>
+  </div>
+
+  <!-- Modal Top de Vehículos -->
+  <div id="modalTop" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalTop')">&times;</span>
+      <h3 class="text-3xl mb-4">Top de Vehículos</h3>
+      <p><strong>Dimensiones:</strong> 120x40 cm | <strong>Autonomía:</strong> 8 horas</p>
+      <p><strong>Cobertura:</strong> 50 km diarios promedio</p>
+      <p><strong>Precio base:</strong> $200/día (por unidad)</p>
+      <p class="mt-4">Ideal para campañas comerciales y lanzamientos de producto.</p>
+      <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Top LED" class="w-full mt-4 rounded">
+    </div>
+  </div>
+
+  <!-- Modal Pantallas Traseras -->
+  <div id="modalTrasera" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modalTrasera')">&times;</span>
+      <h3 class="text-3xl mb-4">Pantallas Traseras</h3>
+      <p><strong>Tecnología:</strong> LED RGB resistente al agua</p>
+      <p><strong>Impresiones:</strong> +50,000 diarias por vehículo</p>
+      <p><strong>Precio base:</strong> $180/día (por unidad)</p>
+      <p class="mt-4">Maximiza el impacto en semáforos y tráfico lento.</p>
+      <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trasera LED" class="w-full mt-4 rounded">
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800 });
+
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+      gtag('event', 'modal_open', { 'service': id });
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    // Cerrar modal al hacer clic fuera
+    window.onclick = function(event) {
+      for (const modal of document.querySelectorAll('.modal')) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      }
+    }
+
+    // Evento de formulario
+    document.getElementById('formCotizacion').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("¡Gracias! Tu cotización ha sido enviada. Nos contactaremos pronto.");
+      gtag('event', 'form_submit', { 'form_name': 'cotizacion' });
+    });
+  </script>
+
+</body>
+</html>
